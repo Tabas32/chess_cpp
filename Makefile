@@ -9,3 +9,5 @@ main.o: ./src/main.cpp
 Chess_game.o: ./src/gameCore/Chess_game.cpp
 	${CXX} ${CXXFLAGS} -c ./src/gameCore/Chess_game.cpp -o ./build/Chess_game.o
 
+clean:
+	cd ./build; rm -rf *.o
