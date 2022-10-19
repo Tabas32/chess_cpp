@@ -1,7 +1,12 @@
+#pragma once
+
 #ifndef PIECE_H
 #define PIECE_H
 
 #include <vector>
+#include "../Board.hpp"
+#include "../enums/PieceType.hpp"
+#include "../enums/Color.hpp"
 
 /*
  * Official movement notation
@@ -32,8 +37,21 @@
  *        is actualy moved
  * b8=Q - promoting pawn to queen
  */
-class Piece {
+class Piece
+{
     public:
+        Piece(Color, PieceType, int);
+        virtual std::vector<int> getAllPossibleMoves(Board);
+
+        bool movePiece(int);
+        int possition();
+        PieceType type();
+        Color color();
+
+    protected:
+        int _possition;
+        PieceType _type;
+        Color _color;
         
 };
 

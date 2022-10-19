@@ -9,11 +9,20 @@ add_subdirectory(googletest)
 
 set(Headers
     src/gameCore/Chess_game.hpp
-    src/gameCore/Piece.hpp
+    src/gameCore/Board.hpp
+    src/gameCore/pieces/Piece.hpp
+    src/gameCore/pieces/King.hpp
+    src/gameCore/pieces/Knight.hpp
+    src/gameCore/pieces/Bishop.hpp
 )
 
 set(Sources
     src/gameCore/Chess_game.cpp
+    src/gameCore/Board.cpp
+    src/gameCore/pieces/Piece.cpp
+    src/gameCore/pieces/King.cpp
+    src/gameCore/pieces/Knight.cpp
+    src/gameCore/pieces/Bishop.cpp
 )
 
 add_library(ChessGame STATIC ${Sources} ${Headers})
