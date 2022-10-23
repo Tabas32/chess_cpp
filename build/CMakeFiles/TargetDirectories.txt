@@ -1,3 +1,0 @@
-/home/marian/Marian/programming/cpp/chess_cpp/chess_cpp/build/CMakeFiles/rebuild_cache.dir
-/home/marian/Marian/programming/cpp/chess_cpp/chess_cpp/build/CMakeFiles/game.dir
-/home/marian/Marian/programming/cpp/chess_cpp/chess_cpp/build/CMakeFiles/edit_cache.dir
