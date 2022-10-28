@@ -1,9 +1,34 @@
 cmake_minimum_required(VERSION 3.10)
+project(chess_game)
+
 set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-project(game VERSION 1.0)
+enable_testing()
 
-file(GLOB_RECURSE SRC_FILES src/*.cpp CONFIGURE_DEPENDS)
-add_executable(game src/main.cpp ${SRC_FILES})
-target_include_directories(game PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
+add_subdirectory(googletest)
+
+set(Headers
+    src/gameCore/Chess_game.hpp
+    src/gameCore/Board.hpp
+    src/gameCore/pieces/Piece.hpp
+    src/gameCore/pieces/King.hpp
+    src/gameCore/pieces/Knight.hpp
+    src/gameCore/pieces/Bishop.hpp
+)
+
+set(Sources
+    src/gameCore/Chess_game.cpp
+    src/gameCore/Board.cpp
+    src/gameCore/pieces/Piece.cpp
+    src/gameCore/pieces/King.cpp
+    src/gameCore/pieces/Knight.cpp
+    src/gameCore/pieces/Bishop.cpp
+)
+
+add_library(ChessGame STATIC ${Sources} ${Headers})
+
+add_executable(ChessGameExec src/main.cpp)
+#target_include_directories(ChessGameExec PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
+target_link_libraries(ChessGameExec PUBLIC ChessGame)
+
+add_subdirectory(tests)
