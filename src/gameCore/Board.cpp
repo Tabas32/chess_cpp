@@ -1,13 +1,27 @@
 #include "Board.hpp"
 #include "pieces/Piece.hpp"
 
-Board::Board(std::vector<Piece*> pieces)
+Board::Board(std::vector<Piece*> pieces):
+    _forvardDirectionWhite(1),
+    _forvardDirectionBlack(-1)
 {
     _pieces = std::vector<Piece*>(64, nullptr);
 
     for(auto piece : pieces)
     {
-        _pieces[piece->possition()] = piece;
+        _pieces[piece->position()] = piece;
+    }
+}
+
+Board::Board(std::vector<Piece*> pieces, int forvardDirectionWhite):
+    _forvardDirectionWhite(forvardDirectionWhite),
+    _forvardDirectionBlack(-forvardDirectionWhite)
+{
+    _pieces = std::vector<Piece*>(64, nullptr);
+
+    for(auto piece : pieces)
+    {
+        _pieces[piece->position()] = piece;
     }
 }
 
@@ -34,7 +48,23 @@ int Board::calculatePositionFrom
     return (targetRow * 8) + targetCol;
 }
 
-Piece* Board::getPieceAtPossition(const int possition)
+Piece* Board::getPieceAtPosition(const int position)
 {
-    return _pieces[possition];
+    return _pieces[position];
+}
+
+bool Board::isShadowPawnAtPosition(int position) {
+    for(auto sPawn : _shadowPawns) {
+        if(sPawn._position == position && sPawn._age < 2) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+int Board::getForvardDirection(Color color) {
+    return (color == Color::WHITE) 
+        ? _forvardDirectionWhite
+        : _forvardDirectionBlack;
 }

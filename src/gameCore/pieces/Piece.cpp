@@ -5,15 +5,14 @@ using std::vector;
 Piece::Piece(Color c, PieceType t, int p):
     _color(c),
     _type(t),
-    _possition(p)
+    _position(p)
 {}
 
-/**
- * todo: validate movement first
- */
-bool Piece::movePiece(int newPossition)
+bool Piece::movePiece(int newPosition)
 {
-    _possition = newPossition;
+
+    //todo: validate movement first
+    _position = newPosition;
     return true;
 }
 
@@ -22,9 +21,9 @@ vector<int> Piece::getAllPossibleMoves(Board board)
     return vector<int>(); 
 }
 
-int Piece::possition()
+int Piece::position()
 {
-    return _possition;
+    return _position;
 }
 
 PieceType Piece::type()

@@ -17,7 +17,7 @@ TEST(PiecesTests, KnightAllMovesAvailable)
     std::vector<Piece*> pieces{ &knight };
     Board board(pieces);
 
-    std::vector<int> expectedPossitions{2, 4, 9, 13, 25, 29, 34, 36};
+    std::vector<int> expectedPositions{2, 4, 9, 13, 25, 29, 34, 36};
 
     /* Action */
     auto possibleMoves = knight.getAllPossibleMoves(board);
@@ -25,7 +25,7 @@ TEST(PiecesTests, KnightAllMovesAvailable)
 
     /* Assertions */
     ASSERT_EQ(possibleMoves.size(), 8);
-    ASSERT_TRUE(possibleMoves == expectedPossitions);
+    ASSERT_TRUE(possibleMoves == expectedPositions);
 }
 
 /*
@@ -44,7 +44,7 @@ TEST(PiecesTests, KnightMovesOutsideOfBoard)
     std::vector<Piece*> pieces{ &knight };
     Board board(pieces);
 
-    std::vector<int> expectedPossitions{2, 18, 25};
+    std::vector<int> expectedPositions{2, 18, 25};
 
     /* Action */
     auto possibleMoves = knight.getAllPossibleMoves(board);
@@ -52,7 +52,7 @@ TEST(PiecesTests, KnightMovesOutsideOfBoard)
 
     /* Assertions */
     ASSERT_EQ(possibleMoves.size(), 3);
-    ASSERT_TRUE(possibleMoves == expectedPossitions);
+    ASSERT_TRUE(possibleMoves == expectedPositions);
 }
 
 /*
@@ -61,7 +61,7 @@ TEST(PiecesTests, KnightMovesOutsideOfBoard)
  * as knight.
  *
  * Expected result: getAllPossibleMoves function should
- *      return available positions omitting possition on
+ *      return available positions omitting position on
  *      which other pieces are standing.
  */
 TEST(PiecesTests, KnightMovesWithAllyPieces)
@@ -74,7 +74,7 @@ TEST(PiecesTests, KnightMovesWithAllyPieces)
     std::vector<Piece*> pieces{ &knight1, &knight2, &knight3 };
     Board board(pieces);
 
-    std::vector<int> expectedPossitions{2, 4, 9, 25, 29, 34};
+    std::vector<int> expectedPositions{2, 4, 9, 25, 29, 34};
 
     /* Action */
     auto possibleMoves = knight1.getAllPossibleMoves(board);
@@ -82,7 +82,7 @@ TEST(PiecesTests, KnightMovesWithAllyPieces)
 
     /* Assertions */
     ASSERT_EQ(possibleMoves.size(), 6);
-    ASSERT_TRUE(possibleMoves == expectedPossitions);
+    ASSERT_TRUE(possibleMoves == expectedPositions);
 }
 
 /*
@@ -90,7 +90,7 @@ TEST(PiecesTests, KnightMovesWithAllyPieces)
  * when oponent pieces are on target positions.
  *
  * Expected result: getAllPossibleMoves function should
- *      return available positions including possition on
+ *      return available positions including position on
  *      which other pieces are standing.
  */
 TEST(PiecesTests, KnightMovesWithOponentPieces)
@@ -103,7 +103,7 @@ TEST(PiecesTests, KnightMovesWithOponentPieces)
     std::vector<Piece*> pieces{ &knight1, &knight2, &knight3 };
     Board board(pieces);
 
-    std::vector<int> expectedPossitions{2, 4, 9, 13, 25, 29, 34, 36};
+    std::vector<int> expectedPositions{2, 4, 9, 13, 25, 29, 34, 36};
 
     /* Action */
     auto possibleMoves = knight1.getAllPossibleMoves(board);
@@ -111,5 +111,5 @@ TEST(PiecesTests, KnightMovesWithOponentPieces)
 
     /* Assertions */
     ASSERT_EQ(possibleMoves.size(), 8);
-    ASSERT_TRUE(possibleMoves == expectedPossitions);
+    ASSERT_TRUE(possibleMoves == expectedPositions);
 }

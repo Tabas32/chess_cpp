@@ -1,12 +1,12 @@
-#ifndef KNIGHT_H
-#define KNIGHT_H
+#ifndef QUEEN_H
+#define QUEEN_H
 
 #include "Piece.hpp"
 
 /*
- * Representation of knight piece.
+ * Representation of queen piece.
  */
-class Knight: public Piece
+class Queen: public Piece
 {
     public:
 
@@ -14,17 +14,17 @@ class Knight: public Piece
          * Constructor with specified color and position.
          *
          * @param const Color, player color
-         * @param const int, initial knight position
+         * @param const int, initial queen position
          */
-        Knight(const Color, const int);
+        Queen(const Color, const int);
 
         /*
-         * Get all position where knight can curently move.
+         * Get all position where queen can curently move.
          *
-         * @param Board, board on which knight is placed
+         * @param Board, board on which queen is placed
          *
          * @return vector<int>, vector with all positions where
-         *      knight can move
+         *      queen can move
          */
         std::vector<int> getAllPossibleMoves(Board);
 };

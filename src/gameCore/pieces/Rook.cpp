@@ -1,14 +1,14 @@
-#include "Bishop.hpp"
+#include "Rook.hpp"
 #include "PieceMovement.hpp"
 
-Bishop::Bishop(const Color c, const int pos):
-    Piece(c, PieceType::BISHOP, pos)
+Rook::Rook(const Color c, const int pos):
+    Piece(c, PieceType::ROOK, pos)
 {}
 
-std::vector<int> Bishop::getAllPossibleMoves(Board board)
+std::vector<int> Rook::getAllPossibleMoves(Board board)
 {
     std::vector<int> allPossibleMoves;
-    int directions[4][2] = {{1, 1}, {1, -1}, {-1, 1}, {-1, -1}};
+    int directions[4][2] = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
     PieceMovement pm;
 
     for(auto dir : directions) {
