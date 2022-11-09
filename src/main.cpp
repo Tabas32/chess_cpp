@@ -1,9 +1,18 @@
-#include "gameCore/Chess_game.hpp"
+#include <iostream>
+#include <vector>
+
+#include "gameCore/pieces/Knight.hpp"
 
 int main() {
-    Chess_game g;
+    Knight knight = Knight(Color::WHITE, 10);
+    std::vector<Piece*> boardPieces{&knight};
 
-    g.play();
+    Board board(boardPieces);
+
+    for(auto move : knight.getAllPossibleMoves(board))
+    {
+        std::cout << move << std::endl;
+    }
 
     return 0;
 }
