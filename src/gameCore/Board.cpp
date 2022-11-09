@@ -1,6 +1,8 @@
 #include "Board.hpp"
 #include "pieces/Piece.hpp"
 
+#include <iostream>
+
 Board::Board(std::vector<Piece*> pieces):
     _forvardDirectionWhite(1),
     _forvardDirectionBlack(-1)
