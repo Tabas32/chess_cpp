@@ -55,11 +55,11 @@ if(NOT ftxui_POPULATED)
 endif()
 
 set(HeadersTui
-    src/tui/a.hpp
+    src/tui/BoardBuilder.hpp
 )
 
 set(SourcesTui
-    src/tui/a.cpp
+    src/tui/BoardBuilder.cpp
 )
 
 add_library(ChessTui STATIC ${SourcesTui} ${HeadersTui})

@@ -2,6 +2,7 @@
 #include <vector>
 
 #include "gameCore/pieces/Knight.hpp"
+#include "tui/BoardBuilder.hpp"
 
 int main() {
     Knight knight = Knight(Color::WHITE, 10);
@@ -9,10 +10,8 @@ int main() {
 
     Board board(boardPieces);
 
-    for(auto move : knight.getAllPossibleMoves(board))
-    {
-        std::cout << move << std::endl;
-    }
+    BoardBuilder bb;
+    bb.buildBoard(&board);
 
     return 0;
 }
