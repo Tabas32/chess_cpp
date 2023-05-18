@@ -36,6 +36,8 @@ std::vector<int> Pawn::getAllPossibleMoves(Board board)
             _forvardDirection
         );
 
+        if (diagonalPos == -1) continue;
+
         auto diagonalPiece = board.getPieceAtPosition(diagonalPos);
         if(diagonalPiece != nullptr &&
             diagonalPiece->color() != _color ||
@@ -62,4 +64,12 @@ std::vector<int> Pawn::getAllPossibleMoves(Board board)
     }
 
     return allPossibleMoves;
+}
+
+
+bool Pawn::movePiece(int newPosition)
+{
+    _isInDefaultPosition = false;
+    _position = newPosition;
+    return true;
 }

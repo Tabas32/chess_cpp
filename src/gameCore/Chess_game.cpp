@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include <vector>
+#include <regex>
 
 #include "pieces/Bishop.hpp"
 #include "pieces/King.hpp"
@@ -62,11 +63,32 @@ int Chess_game::play() {
 
     Board board(boardPieces);
 
+    std::regex inputPattern("([a-h])([1-8]) ([a-h])([1-8])");
+    std::smatch inputMatch;
+
     BoardBuilder bb;
     bb.buildBoard(&board, [&](ftxui::Event event) {
         if (event == ftxui::Event::Return) {
-            std::cout << "Submitted text: " << bb.move << std::endl;
+            //std::cout << "Submitted text: " << bb.move << std::endl;
             // translate 'move' input and do appropriate board move
+            int fromColumn, fromRow, toColumn, toRow = 0;
+
+            if (
+                std::regex_match(bb.move, inputMatch, inputPattern) &&
+                inputMatch.size() == 5
+            ) {
+                fromColumn = static_cast<std::string>(inputMatch[1])[0] - 'a';
+                fromRow = 8 - std::stoi(inputMatch[2]);
+                int fromPosition = fromRow * 8 + fromColumn;
+
+                toColumn = static_cast<std::string>(inputMatch[3])[0] - 'a';
+                toRow = 8 - std::stoi(inputMatch[4]);
+                int toPosition = toRow * 8 + toColumn;
+
+                board.makeMove(fromPosition, toPosition);
+                bb.move = "";
+            }
+
             return true;
         }
 

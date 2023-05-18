@@ -75,6 +75,12 @@ class Board
          */
         int getForvardDirection(Color);
 
+        /*
+         * Move piece from postion (param 1) to different possition (param 2).
+         * If move was performed return true
+         */
+        bool makeMove(int, int);
+
     private:
 
         /*
