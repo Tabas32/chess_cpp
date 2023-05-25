@@ -70,3 +70,30 @@ int Board::getForvardDirection(Color color) {
         ? _forvardDirectionWhite
         : _forvardDirectionBlack;
 }
+
+bool Board::makeMove(int fromPosition, int toPosition) {
+    if (_pieces[fromPosition] == nullptr) {
+        return false;
+    }
+
+    if (
+        _pieces[toPosition] != nullptr && 
+        (_pieces[fromPosition]->color() == _pieces[toPosition]->color())
+    ) {
+        return false;
+    }
+
+    auto possibleMoves = _pieces[fromPosition]->getAllPossibleMoves(*this);
+
+    for(auto possibleMove : possibleMoves) {
+        if (possibleMove == toPosition) {
+            _pieces[fromPosition]->movePiece(toPosition);
+            _pieces[toPosition] = _pieces[fromPosition];
+            _pieces[fromPosition] = nullptr;
+
+            return true;
+        }
+    }
+
+    return false;
+}

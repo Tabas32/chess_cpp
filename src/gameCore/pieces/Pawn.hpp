@@ -34,7 +34,9 @@ class Pawn: public Piece
          * @return vector<int>, vector with all positions where
          *      pawn can move
          */
-        std::vector<int> getAllPossibleMoves(Board);
+        std::vector<int> getAllPossibleMoves(Board) override;
+
+        bool movePiece(int) override;
 
     private:
         const int _forvardDirection;

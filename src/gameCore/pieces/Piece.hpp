@@ -72,7 +72,7 @@ class Piece
          *
          * @return bool, true if piece was moved
          */
-        bool movePiece(int);
+        virtual bool movePiece(int);
 
         /*
          * Get position of piece.

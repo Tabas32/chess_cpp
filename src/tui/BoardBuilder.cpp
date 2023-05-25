@@ -41,17 +41,6 @@ void BoardBuilder::buildBoard(
         border;
     });
 
-    /*
-    auto eventer = CatchEvent(renderer, [&](Event event) {
-        if (event == Event::Return) {
-            std::cout << "Submitted text: " << move << std::endl;
-            // translate 'move' input and do appropriate board move
-            return true;
-        }
-
-        return false;
-    });
-    */
     auto eventer = CatchEvent(renderer, onSubmitAction);
 
     auto screen = ScreenInteractive::FitComponent();
@@ -61,9 +50,21 @@ void BoardBuilder::buildBoard(
 ftxui::Element BoardBuilder::drawBoard(Board* board) {
     std::vector<ftxui::Element> boardElements = {};
 
+    std::vector<ftxui::Element> topLegend = {};
+    topLegend.push_back(ftxui::text("  "));
+
+    for(int i = 0; i < 8; i++) {
+        std::string columnLetter = "   ";
+        columnLetter[1] = 'A' + i;
+        topLegend.push_back(ftxui::text(columnLetter));
+    }
+
+    boardElements.push_back(hbox(topLegend));
+
     for (int row = 0; row < 8; row++) {
         std::vector<ftxui::Element> rowElements = {};
 
+        rowElements.push_back(ftxui::text(std::to_string(8 - row) + " "));
         for (int col = 0; col < 8; col++) {
             auto piece = board->getPieceAtPosition((row * 8) + col);
             std::string value = "   ";
